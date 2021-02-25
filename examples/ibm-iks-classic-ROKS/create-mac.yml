@@ -16,6 +16,12 @@
         - '"cluster could not be found" not in cluster_output.stderr'
       register: cluster_output
 
+
+    # - name: Print cluster_output
+    #   debug:
+    #     msg: "DEBUG-print cluster_output : {{ cluster_output }}"
+
+
     - name: Save Cluster info as fact
       set_fact:
         cacheable: True
@@ -31,7 +37,7 @@
         kube_version: "{{ kube_version }}"
         public_vlan_id: "{{ public_vlan_id }}"
         private_vlan_id: "{{ private_vlan_id }}"
-        default_pool_size: "{{ default_worker_pool_size }}"
+        default_pool_size: "{{ default_worker_ppol_size }}"
         entitlement: "{{ entitlement }}"
       register: cluster_create_output
       when: cluster_output.rc != 0
