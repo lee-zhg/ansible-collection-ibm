@@ -1,0 +1,15 @@
+---
+- name: Create LogDNA instance.
+  hosts: localhost
+  collections:
+   - ibm.cloudcollection
+  tasks:
+    - name: Read the variables from var file
+      include_vars:
+        file: vars.yml
+    - name: Create a LogDNA instance
+      ibm_resource_instance:
+        name: "{{ instance_name }}"
+        service: "logdna"
+        plan: "{{ plan_type }}"
+        location: "{{ location_info }}"
